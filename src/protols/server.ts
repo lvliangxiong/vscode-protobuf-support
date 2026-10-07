@@ -6,6 +6,7 @@ import path from 'path';
 import { promisify } from 'util';
 import { execFile } from 'child_process';
 import find from "find-process";
+import { navigationMiddleware } from './navigation';
 
 
 import {
@@ -140,6 +141,7 @@ export class ProtolsServer {
                 { scheme: 'file', language: 'proto3' },
                 { scheme: 'file', language: 'proto' }
             ],
+            middleware: navigationMiddleware,
         };
 
         this.client = new LanguageClient(
